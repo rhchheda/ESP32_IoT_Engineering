@@ -20,13 +20,7 @@
 .card:hover { transform:translateY(-3px); border-color:#d4af37; box-shadow:0 16px 40px rgba(0,0,0,.22); }
 .tab-active { color:#d4af37!important; border-color:#d4af37!important; background:#0f1c4d!important; }
 ::-webkit-scrollbar{height:8px;width:8px} ::-webkit-scrollbar-thumb{background:#263d63;border-radius:8px}
-
-    .kle-logo-asset{display:flex;align-items:center;gap:12px}
-    .kle-logo-asset img{height:48px;width:auto;max-width:220px;object-fit:contain}
-    .kle-logo-placeholder{height:48px;min-width:170px;padding:8px 12px;border:1px dashed #48627f;border-radius:10px;color:#9db0c5;font-size:11px;display:flex;align-items:center}
-    
-
-    .phase0-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.phase0-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
     .phase0-step{position:relative;padding:18px 18px 18px 50px;background:#0a1728;border:1px solid #294563;border-radius:14px}
     .phase0-step .num{position:absolute;left:15px;top:16px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#d4af37;color:#07111f;font-weight:900;font-size:12px}
     .phase0-now{border:1px solid #2d806c;background:linear-gradient(145deg,#0b211f,#0a1728)}
@@ -47,6 +41,12 @@
 </style>
 </head>
 
+<!--
+  KLE BRANDING:
+  Uses the same asset convention as the supplied project.html:
+  assets/KLE_Logo.png
+  Keep the approved KLE logo asset in the assets folder beside this HTML.
+-->
 <body class="bg-[#0a1128] text-slate-100 font-sans antialiased min-h-screen pb-20 p-4 md:p-8">
 
 <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
@@ -55,25 +55,36 @@
 
 <header class="border-b border-[#1b2a63] pb-6">
   <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
-    <div>
-      <span class="text-xs font-mono tracking-widest text-[#d4af37] uppercase font-bold">Concept & Product Benchmark | August 2026</span>
-      <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mt-1">
-        E&C Universal ESP32 IoT Engineering Platform
-      </h1>
-      <p class="text-slate-400 mt-2 text-sm md:text-base max-w-4xl">
-        A proposed modular student platform combining ESP32 control, standardized plug-in I/O,
-        power electronics, measurement, sensors, actuators and industrial interfaces while dramatically reducing routine jumper-wire work.
-      </p>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span class="px-3 py-1 rounded-full text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Minimal V1 first</span>
-        <span class="px-3 py-1 rounded-full text-xs bg-[#d4af37]/10 text-[#e8c766] border border-[#d4af37]/20">E&C focused</span>
-        <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">Modular ecosystem</span>
-        <span class="px-3 py-1 rounded-full text-xs bg-blue-500/10 text-blue-300 border border-blue-500/20">Designed for labs</span>
+    <div class="flex items-start gap-4">
+      <img src="assets/KLE_Logo.png"
+           alt="KLE Technological University"
+           class="h-12 md:h-14 w-auto flex-shrink-0"
+           onerror="this.style.display='none';document.getElementById('kleBrandFallback').style.display='block';">
+      <div>
+        <div id="kleBrandFallback" style="display:none" class="text-sm font-semibold text-slate-300 mb-1">
+          KLE Technological University
+        </div>
+        <span class="text-xs font-mono tracking-widest text-[#d4af37] uppercase font-bold">
+          E&C Innovation & Laboratory Platform
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mt-1">
+          E&C Universal ESP32 IoT Engineering Platform
+        </h1>
+        <p class="text-slate-400 mt-2 text-sm md:text-base max-w-4xl">
+          A proposed compact, modular student platform designed to reduce repetitive jumper-wire work
+          while preserving hands-on electronics learning and enabling progressive expansion.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="px-3 py-1 rounded-full text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Phase 0 ready</span>
+          <span class="px-3 py-1 rounded-full text-xs bg-[#d4af37]/10 text-[#e8c766] border border-[#d4af37]/20">Minimal V1 first</span>
+          <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">E&C focused</span>
+          <span class="px-3 py-1 rounded-full text-xs bg-blue-500/10 text-blue-300 border border-blue-500/20">Staged investment</span>
+        </div>
       </div>
     </div>
     <div class="flex items-center gap-3">
       <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-ping"></span> Architecture Ready
+        <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-ping"></span> Concept Validation
       </span>
     </div>
   </div>
@@ -841,7 +852,7 @@ OFF-THE-SHELF ESP32 ECOSYSTEM
         The opportunity is to combine that usability with an E&C-oriented power and instrumentation layer, while keeping the platform affordable enough for institutional deployment.
       </p>
     </div>
-    <button onclick="showToast('Architecture saved conceptually: Base Carrier + Standard Modules + Power & Measurement + Industrial Expansion','success')" class="self-start px-4 py-2 text-xs font-semibold bg-[#1b2a63] hover:bg-[#2f3f7f] border border-[#2f3f7f] rounded-xl">✓ Confirm Concept</button>
+    
   </div>
 </section>
 
@@ -899,21 +910,5 @@ function filterProducts(type){
   showToast(type==='all'?'Showing all benchmark products':`Showing ${type} products`,'info');
 }
 </script>
-
-<section id="assets">
-  <div class="section-head">
-    <div>
-      <div class="kicker">Branding Assets</div>
-      <h2>KLE Logo Asset</h2>
-      <p>The HTML is prepared to use the KLE Technological University logo as an external asset, so the logo can be replaced without changing the page design.</p>
-    </div>
-  </div>
-  <div class="card">
-    <h3>Logo file</h3>
-    <p>Place the approved KLE logo image as <strong>kle-logo.png</strong> in the same folder as this HTML. The header will load it automatically.</p>
-    <p class="small">For the final college version, use the official approved KLE logo asset rather than a recreated or compressed version.</p>
-  </div>
-</section>
-
 </body>
 </html>
