@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E&C Universal ESP32 IoT Engineering Platform</title>
+<title>Universal ESP32 IoT Engineering Platform</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 @keyframes flow { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
@@ -886,6 +886,7 @@ OFF-THE-SHELF ESP32 ECOSYSTEM
         <tr><td>3-pin GPIO / sensor ports</td><td>6 × GND / V+ / SIG</td><td class="price">Included</td><td>PIR, LDR, IR, buttons, buzzer, relay inputs and similar modules</td></tr>
         <tr><td>I²C ports</td><td>2 × VCC / GND / SDA / SCL</td><td class="price">Included</td><td>BME280, OLED, MPU6050, BH1750, RTC, INA219 and similar modules</td></tr>
         <tr><td>Servo ports</td><td>2 × GND / 5V / PWM</td><td class="price">Included</td><td>SG90/MG90S and basic motion experiments</td></tr>
+        <tr><td>JST-XH connectors (keyed)</td><td>3-pin (GPIO/servo) + 4-pin (I²C), polarized</td><td class="price">₹60–120</td><td>Prevents reversed/wrong-pin insertion across every port</td></tr>
         <tr><td>Power & protection</td><td>USB-C 5V, 3.3V rail, protection, status LED, test points</td><td class="price">₹100–250</td><td>Safe and repeatable student connections</td></tr>
         <tr><td>Mini prototyping area</td><td>Small 2.54 mm header/breadboard zone</td><td class="price">Included</td><td>Preserves deliberate jumper-wire learning</td></tr>
         <tr><td>Built-in learning I/O</td><td>Buttons, LEDs, RGB, buzzer, potentiometer, LDR, encoder</td><td class="price">₹250–500</td><td>Immediate experiments without external modules</td></tr>
@@ -900,6 +901,52 @@ OFF-THE-SHELF ESP32 ECOSYSTEM
     <div class="bg-[#0a1128] border border-[#1b2a63] rounded-xl p-4"><div class="text-xs text-[#e8c766] font-bold">BASIC</div><div class="text-xl font-bold mt-1">₹3.5–4.5k</div><div class="text-[10px] text-slate-500 mt-1">ESP32 + carrier + core I/O + selected sensors</div></div>
     <div class="bg-[#0a1128] border border-emerald-500/30 rounded-xl p-4"><div class="text-xs text-emerald-300 font-bold">STANDARD</div><div class="text-xl font-bold mt-1">₹4.5–6k</div><div class="text-[10px] text-slate-500 mt-1">Adds power lab, measurement, relay, servo and motor interfaces</div></div>
     <div class="bg-[#0a1128] border border-cyan-500/30 rounded-xl p-4"><div class="text-xs text-cyan-300 font-bold">ADVANCED</div><div class="text-xl font-bold mt-1">₹6–8k+</div><div class="text-[10px] text-slate-500 mt-1">Adds industrial communications and expanded sensor/actuator library</div></div>
+  </div>
+
+  <div class="mt-5 bg-[#0a1128] rounded-xl border border-[#1b2a63] p-4 overflow-x-auto">
+    <div class="text-xs text-slate-400 mb-2 font-mono uppercase tracking-widest">JST-XH connector family used on every port</div>
+    <svg viewBox="0 0 900 190" class="w-full min-w-[720px] h-auto">
+      <defs>
+        <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/>
+        </linearGradient>
+      </defs>
+
+      <g>
+        <rect x="30" y="35" width="190" height="110" rx="10" fill="url(#connGrad)" stroke="#d4af37" stroke-width="2"/>
+        <text x="125" y="58" text-anchor="middle" fill="#e8c766" font-weight="bold" font-size="13">3-PIN JST-XH</text>
+        <circle cx="80" cy="95" r="9" fill="#ef4444"/><text x="80" y="99" text-anchor="middle" fill="#0a1128" font-size="9" font-weight="bold">V</text>
+        <circle cx="125" cy="95" r="9" fill="#1f2937" stroke="#94a3b8"/><text x="125" y="99" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="bold">G</text>
+        <circle cx="170" cy="95" r="9" fill="#facc15"/><text x="170" y="99" text-anchor="middle" fill="#0a1128" font-size="9" font-weight="bold">S</text>
+        <text x="125" y="125" text-anchor="middle" fill="#94a3b8" font-size="10">GPIO / Servo ports</text>
+      </g>
+
+      <g>
+        <rect x="250" y="35" width="220" height="110" rx="10" fill="url(#connGrad)" stroke="#4fd1c5" stroke-width="2"/>
+        <text x="360" y="58" text-anchor="middle" fill="#7ee7df" font-weight="bold" font-size="13">4-PIN JST-XH</text>
+        <circle cx="300" cy="95" r="9" fill="#ef4444"/><text x="300" y="99" text-anchor="middle" fill="#0a1128" font-size="9" font-weight="bold">V</text>
+        <circle cx="340" cy="95" r="9" fill="#1f2937" stroke="#94a3b8"/><text x="340" y="99" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="bold">G</text>
+        <circle cx="380" cy="95" r="9" fill="#4fd1c5"/><text x="380" y="99" text-anchor="middle" fill="#0a1128" font-size="9" font-weight="bold">D</text>
+        <circle cx="420" cy="95" r="9" fill="#60a5fa"/><text x="420" y="99" text-anchor="middle" fill="#0a1128" font-size="9" font-weight="bold">C</text>
+        <text x="360" y="125" text-anchor="middle" fill="#94a3b8" font-size="10">I²C ports (SDA/SCL)</text>
+      </g>
+
+      <g>
+        <rect x="500" y="35" width="200" height="110" rx="10" fill="url(#connGrad)" stroke="#63d391" stroke-width="2"/>
+        <text x="600" y="58" text-anchor="middle" fill="#a7f3d0" font-weight="bold" font-size="13">KEYED SHROUD</text>
+        <path d="M550 80 L650 80 L650 115 L620 115 L610 122 L590 122 L580 115 L550 115 Z" fill="#111827" stroke="#63d391" stroke-width="1.5"/>
+        <text x="600" y="140" text-anchor="middle" fill="#94a3b8" font-size="10">Notch prevents reverse insertion</text>
+      </g>
+
+      <g>
+        <rect x="730" y="35" width="140" height="110" rx="10" fill="url(#connGrad)" stroke="#f2a65a" stroke-width="2"/>
+        <text x="800" y="58" text-anchor="middle" fill="#f6c690" font-weight="bold" font-size="13">COLOR CODE</text>
+        <rect x="750" y="72" width="14" height="10" rx="2" fill="#ef4444"/><text x="770" y="81" fill="#cbd5e1" font-size="9">Power</text>
+        <rect x="750" y="88" width="14" height="10" rx="2" fill="#1f2937" stroke="#94a3b8"/><text x="770" y="97" fill="#cbd5e1" font-size="9">GND</text>
+        <rect x="750" y="104" width="14" height="10" rx="2" fill="#facc15"/><text x="770" y="113" fill="#cbd5e1" font-size="9">Signal</text>
+        <rect x="750" y="120" width="14" height="10" rx="2" fill="#4fd1c5"/><text x="770" y="129" fill="#cbd5e1" font-size="9">I²C bus</text>
+      </g>
+    </svg>
   </div>
 </section>
 
@@ -980,7 +1027,7 @@ OFF-THE-SHELF ESP32 ECOSYSTEM
 
 <footer class="fixed bottom-0 left-0 right-0 z-40 bg-[#0a1128]/95 backdrop-blur-md border-t border-[#1b2a63]/80 text-slate-400 text-xs py-4 px-4 text-center shadow-[0_-8px_24px_rgba(0,0,0,0.35)]">
   <p class="flex items-center justify-center flex-wrap gap-1 font-mono">
-    Engineering concept prepared for evaluation
+    Engineering concept prepared for evaluation • Team,CEER  
     <span class="text-red-500 heart">♥</span>
     ESP32 • IoT • Power Electronics • Instrumentation • E&C Education
   </p>
