@@ -25,6 +25,25 @@
     .kle-logo-asset img{height:48px;width:auto;max-width:220px;object-fit:contain}
     .kle-logo-placeholder{height:48px;min-width:170px;padding:8px 12px;border:1px dashed #48627f;border-radius:10px;color:#9db0c5;font-size:11px;display:flex;align-items:center}
     
+
+    .phase0-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .phase0-step{position:relative;padding:18px 18px 18px 50px;background:#0a1728;border:1px solid #294563;border-radius:14px}
+    .phase0-step .num{position:absolute;left:15px;top:16px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#d4af37;color:#07111f;font-weight:900;font-size:12px}
+    .phase0-now{border:1px solid #2d806c;background:linear-gradient(145deg,#0b211f,#0a1728)}
+    .phase0-arrow{color:#d4af37;font-weight:900;text-align:center;padding:4px}
+    @media(max-width:800px){.phase0-grid{grid-template-columns:1fr}}
+    
+
+    .metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .metric{padding:17px;border:1px solid #294563;border-radius:14px;background:#0a1728}
+    .metric b{display:block;font-size:25px;color:#fff}.metric span{font-size:11px;color:#9db0c5}
+    .formfactor{background:#071421;border:1px solid #294463;border-radius:18px;padding:22px;overflow:auto}
+    .formfactor pre{margin:0;color:#cfe2f3;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;min-width:720px}
+    .safety{border-left:4px solid #63d391;background:#0a211b;padding:16px 18px;border-radius:0 12px 12px 0}
+    .accuracy{border-left:4px solid #73a9ff;background:#0b1c31;padding:16px 18px;border-radius:0 12px 12px 0}
+    @media(max-width:900px){.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.metric-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 
@@ -59,6 +78,202 @@
     </div>
   </div>
 </header>
+
+
+<section id="phase0" style="padding:48px 0;border-bottom:1px solid #172a42">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Phase 0 • Start Immediately</div>
+      <h2>Rapid Start with General-Purpose Hardware</h2>
+      <p><strong style="color:#fff">No custom PCB is required to begin.</strong> Use readily available ESP32 development boards and general-purpose modules immediately, while observing which connections students repeatedly make. Those observations become the evidence for the V1 Companion Board.</p>
+    </div>
+  </div>
+
+  <div class="phase0-grid">
+    <div class="card phase0-now">
+      <h3>Build now • Learn now • Observe now</h3>
+      <p class="small">The off-the-shelf setup is not a throwaway prototype. It becomes the first teaching platform and the validation instrument for the custom board.</p>
+      <div style="margin-top:14px;display:grid;gap:10px">
+        <div class="phase0-step"><span class="num">1</span><strong>Procure a small pilot set</strong><br><span class="small">ESP32 DevKit, expansion board, breadboard, jumper wires and common sensors/actuators.</span></div>
+        <div class="phase0-step"><span class="num">2</span><strong>Run real student experiments</strong><br><span class="small">GPIO, ADC, I²C, OLED, environmental sensing, relay, servo, stepper, INA219 and basic power experiments.</span></div>
+        <div class="phase0-step"><span class="num">3</span><strong>Record repetitive wiring</strong><br><span class="small">Identify common power, GND, SDA/SCL, PWM, ADC and GPIO connections, plus recurring mistakes.</span></div>
+        <div class="phase0-step"><span class="num">4</span><strong>Freeze V1 from evidence</strong><br><span class="small">Only the connections students actually need repeatedly become standardized connector ports.</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h3>What we learn before designing V1</h3>
+        <table>
+          <tr><th>Observe</th><th>Decision for V1</th></tr>
+          <tr><td>Repeated 3-wire sensor connections</td><td>Standard GND / VCC / SIG ports</td></tr>
+          <tr><td>Repeated I²C wiring</td><td>Dedicated keyed I²C ports</td></tr>
+          <tr><td>Servo power/signal wiring</td><td>Dedicated servo ports</td></tr>
+          <tr><td>Frequent 3.3 V / 5 V connections</td><td>Accessible regulated rails</td></tr>
+          <tr><td>Common student wiring errors</td><td>Protection + clear labelling</td></tr>
+          <tr><td>Modules rarely used</td><td>Keep them out of V1</td></tr>
+        </table>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Development philosophy</h3>
+        <div class="pillbar" style="margin-top:10px">
+          <span class="pill">Start with what exists</span>
+          <span class="pill">Validate with students</span>
+          <span class="pill">Measure repetitive wiring</span>
+          <span class="pill">Design only what is needed</span>
+          <span class="pill">Expand progressively</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arch" style="margin-top:18px">
+<pre>
+OFF-THE-SHELF ESP32 ECOSYSTEM
+        │
+        ├── Student experiments
+        │
+        ├── Wiring observations
+        │
+        ├── Module usage data
+        │
+        └── Failure / confusion points
+                    │
+                    ▼
+         V1 COMPANION BOARD SPEC
+                    │
+                    ▼
+       SMALL, LOW-COST CUSTOM PCB
+                    │
+                    ▼
+             STUDENT PILOT
+                    │
+                    ▼
+                 V1.0
+</pre>
+  </div>
+
+  <div class="callout" style="margin-top:18px">
+    <strong>Core principle:</strong> The custom board should not be designed from assumptions. The general-purpose phase tells us what is worth permanently connectorizing and what should remain a jumper-wire experiment.
+  </div>
+</section>
+
+<section id="value-safety-formfactor" style="padding:48px 0;border-bottom:1px solid #172a42">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Design Value • Safety • Form Factor</div>
+      <h2>What the Platform Must Save, Improve and Protect</h2>
+      <p>The objective is not simply fewer wires. V1 should reduce repetitive setup time, reduce connection errors, improve low-voltage safety and make experiments more repeatable, while preserving deliberate hands-on circuit learning.</p>
+    </div>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric"><b>Less setup</b><span>Target: materially reduce repeated wiring before each experiment.</span></div>
+    <div class="metric"><b>Fewer errors</b><span>Keyed, labelled connections reduce polarity and pin-mapping mistakes.</span></div>
+    <div class="metric"><b>More lab time</b><span>Students spend more time measuring, coding and analysing instead of rebuilding routine wiring.</span></div>
+    <div class="metric"><b>Reusable</b><span>One compact companion platform can support many experiments and batches.</span></div>
+  </div>
+
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card">
+      <h3>Faculty / Lab Saving Model</h3>
+      <p>Do not claim a fixed saving until Phase 0 measurements are available. Instead, the proposal should track the following measurable quantities:</p>
+      <table style="margin-top:12px">
+        <tr><th>Measure</th><th>Baseline</th><th>V1 target</th></tr>
+        <tr><td>Setup time / student experiment</td><td>Record during Phase 0</td><td>Reduce repetitive setup substantially</td></tr>
+        <tr><td>Wiring / reconnection errors</td><td>Record faults</td><td>Reduce through keyed ports + labels</td></tr>
+        <tr><td>Faculty troubleshooting time</td><td>Record per lab</td><td>Reduce routine connection support</td></tr>
+        <tr><td>Damaged modules / wrong polarity incidents</td><td>Record incidents</td><td>Reduce with protection and standard pinout</td></tr>
+      </table>
+      <div class="callout" style="margin-top:14px">
+        <strong>Recommended claim:</strong> “Savings will be demonstrated from Phase 0 data rather than assumed.” This makes the proposal credible and allows the college to calculate annual savings across batches.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Student Value</h3>
+      <div class="pillbar" style="margin-top:10px">
+        <span class="pill">Less repetitive wiring</span>
+        <span class="pill">Faster experiment setup</span>
+        <span class="pill">Fewer connection mistakes</span>
+        <span class="pill">More repeatable experiments</span>
+        <span class="pill">More time for debugging</span>
+        <span class="pill">Still supports breadboard learning</span>
+      </div>
+      <div class="accuracy" style="margin-top:16px">
+        <strong>Accuracy principle</strong><br>
+        Standardized ports improve repeatability of the connection and power arrangement. They do not make the sensor or measurement itself automatically accurate. Calibration, sensor tolerance, ADC resolution, grounding and measurement technique remain part of the student's learning.
+      </div>
+    </div>
+  </div>
+
+  <div class="safety" style="margin-top:18px">
+    <strong>Safety by architecture</strong><br>
+    V1 should remain a low-voltage educational platform. Use protected 5 V / 3.3 V rails, current limiting or resettable protection where appropriate, reverse-polarity protection, clear power indication and physically distinct power connectors. Mains experiments should remain external to the V1 board and use appropriately rated, enclosed laboratory equipment. The platform should not imply that connectorization makes hazardous voltages safe.
+  </div>
+
+  <div class="section-head" style="margin-top:34px">
+    <div>
+      <div class="kicker">Provisional Physical Target</div>
+      <h2>Compact Form Factor, Not a Large Trainer</h2>
+      <p>Keep V1 close to the student's ESP32 workspace. Exact dimensions and connector placement remain a Phase 0 decision.</p>
+    </div>
+  </div>
+
+  <div class="formfactor">
+<pre>
+                  PROVISIONAL V1 ENVELOPE
+                   approximately 100 × 70 mm
+                         (target only)
+
+        ┌──────────────────────────────────────────┐
+        │ ESP32 DEVKIT / CONTROLLER AREA            │
+        │ ┌──────────────────┐                      │
+        │ │      ESP32       │                      │
+        │ │      38-PIN      │                      │
+        │ └──────────────────┘                      │
+        │                                            │
+        │ I²C-1 ○ ○    I²C-2 ○ ○                    │
+        │                                            │
+        │ GPIO/SENSOR  ○ ○ ○ ○ ○ ○                  │
+        │                                            │
+        │ SERVO-1 ○ ○ ○     SERVO-2 ○ ○ ○           │
+        │                                            │
+        │ 3V3 ○    5V ○    GND ○    USB-C           │
+        │                                            │
+        │ ┌───────────────┐                          │
+        │ │ MINI PROTO    │  ← deliberate jumper     │
+        │ │ AREA          │     experimentation      │
+        │ └───────────────┘                          │
+        └──────────────────────────────────────────┘
+
+     V1 principle: compact companion, not an all-in-one trainer.
+     Optional modules grow outward only when Phase 0 proves they are needed.
+</pre>
+  </div>
+
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card">
+      <h3>What is connectorized</h3>
+      <p class="small">Repeated sensor, I²C, servo, power and common GPIO connections.</p>
+    </div>
+    <div class="card">
+      <h3>What remains wired</h3>
+      <p class="small">Breadboard circuits, custom analog work, transistor/MOSFET experiments and non-standard modules.</p>
+    </div>
+    <div class="card">
+      <h3>What stays modular</h3>
+      <p class="small">Buck/boost, motor, industrial communication and instrumentation capabilities are added only when justified.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="card" style="margin-top:16px">
+  <h3>Timeline principle</h3>
+  <p><strong style="color:#fff">Project start is immediate.</strong> Phase 0 begins with general-purpose hardware while V1 PCB requirements are being discovered. Custom PCB development follows validated student usage rather than blocking the project.</p>
+</div>
 
 <section class="bg-[#0f1c4d] border border-[#1b2a63] rounded-2xl p-6 shadow-2xl">
   <div class="grid lg:grid-cols-4 gap-4">
@@ -543,7 +758,7 @@
       <thead><tr><th>Block</th><th>Proposed implementation</th><th>Indicative V1 target</th><th>Why it belongs</th></tr></thead>
       <tbody>
         <tr><td>ESP32 core</td><td>Replaceable 38-pin ESP32 DevKit</td><td class="price">₹400–800</td><td>Compute, Wi-Fi, BLE, GPIO</td></tr>
-        <tr><td>Universal Companion PCB</td><td>Compact 2-layer PCB + ESP32 socket + keyed connectors</td><td class="price">₹250–600</td><td>Primary V1 objective: eliminate repetitive wiring</td></tr>
+        <tr><td>Universal Companion PCB</td><td>Compact companion interface, implementation to be frozen after Phase 0 validation</td><td class="price">₹250–600</td><td>Primary V1 objective: eliminate repetitive wiring</td></tr>
         <tr><td>3-pin GPIO / sensor ports</td><td>6 × GND / V+ / SIG</td><td class="price">Included</td><td>PIR, LDR, IR, buttons, buzzer, relay inputs and similar modules</td></tr>
         <tr><td>I²C ports</td><td>2 × VCC / GND / SDA / SCL</td><td class="price">Included</td><td>BME280, OLED, MPU6050, BH1750, RTC, INA219 and similar modules</td></tr>
         <tr><td>Servo ports</td><td>2 × GND / 5V / PWM</td><td class="price">Included</td><td>SG90/MG90S and basic motion experiments</td></tr>
