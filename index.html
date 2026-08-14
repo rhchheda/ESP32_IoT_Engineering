@@ -1212,7 +1212,38 @@ function filterProducts(type){
   showToast(type==='all'?'Showing all benchmark products':`Showing ${type} products`,'info');
 }
 </script>
+// Anti-copy protection with funny messages
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    showFunnyMessage("🔒 Nice try! This page is protected. Even the right-click knows it's special!");
+});
 
-
+document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.key === 'F12') {
+        e.preventDefault();
+        showFunnyMessage("🛠️ Developer tools? You must be a wizard! But this page is magic-proof.");
+    }
+    // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) {
+        e.preventDefault();
+        showFunnyMessage("🧙‍♂️ Ah, trying to inspect? The magic shield is up!");
+    }
+    if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        showFunnyMessage("📄 View source? That's like peeking behind the curtain. Not today!");
+    }
+    // Ctrl+C, Ctrl+V, Ctrl+A, Ctrl+S
+    if (e.ctrlKey && ['c', 'v', 'a', 's'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+        const messages = {
+            'c': "📋 Copying? This page is copy-protected with love and magic!",
+            'v': "📥 Pasting? Nice try, but this page is read-only!",
+            'a': "📑 Select all? You can look, but you can't take!",
+            's': "💾 Save? This page is already saved in our hearts!"
+        };
+        showFunnyMessage(messages[e.key.toLowerCase()] || "⛔ This action is not allowed on this page.");
+    }
+});
 </body>
 </html>
